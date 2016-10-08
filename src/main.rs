@@ -134,7 +134,9 @@ fn main() {
             match ev {
                 Event::Closed => return,
                 Event::KeyboardInput(ElementState::Pressed, _, Some(code)) => match code {
+                    VirtualKeyCode::Minus => draw_params.zoom_out(),
                     VirtualKeyCode::Subtract => draw_params.zoom_out(),
+                    VirtualKeyCode::Add => draw_params.zoom_in(),
                     VirtualKeyCode::Equals => draw_params.zoom_in(),
                     VirtualKeyCode::Space => draw_params.reset(),
                     VirtualKeyCode::Up => draw_params.scroll(0.0, -1.0),
