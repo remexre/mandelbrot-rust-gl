@@ -1,0 +1,7 @@
+[package]
+authors = ["Nathaniel Ringo <remexre@gmail.com>"]
+name = "mandelbrot"
+version = "0.1.0"
+
+[dependencies]
+glium = "0.15.0"
