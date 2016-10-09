@@ -2,7 +2,7 @@
 extern crate glium;
 
 use glium::{DisplayBuild, Program, Surface, VertexBuffer};
-use glium::glutin::{ElementState, Event, MouseButton, VirtualKeyCode, WindowBuilder};
+use glium::glutin::{ElementState, Event, MouseButton, MouseScrollDelta, TouchPhase, VirtualKeyCode, WindowBuilder};
 use glium::index::{NoIndices, PrimitiveType};
 use glium::uniforms::{Uniforms, UniformValue};
 
@@ -154,6 +154,13 @@ fn main() {
                         draw_params.pan(mouse_last.0 - x, mouse_last.1 - y);
                     }
                     mouse_last = (x, y);
+                },
+                Event::MouseWheel(MouseScrollDelta::LineDelta(x, y), TouchPhase::Moved) => {
+                    if y < 0.0 {
+                        draw_params.zoom_out()
+                    } else {
+                        draw_params.zoom_in()
+                    }
                 },
                 Event::Resized(w, h) => {
                     draw_params.height = h as f64;
